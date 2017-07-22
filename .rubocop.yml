@@ -1,0 +1,52 @@
+AllCops:
+  TargetRubyVersion: 2.4
+  Exclude:
+    - 'spec/spec_helper.rb'
+    - 'spec/rails_helper.rb'
+    - 'db/seeds.rb'
+    - 'db/schema.rb'
+    - 'config/**/*'
+    - '**/Gemfile'
+    - '**/Rakefile'
+    - 'vendor/**/*'
+    - 'db/**/*'
+    - 'lib/tasks/**/*'
+    - 'bin/**'
+
+  DisplayCopNames: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyLinesAroundBlockBody:
+  Enabled: false
+
+Style/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+Style/RaiseArgs:
+  Enabled: false
+
+Style/TrailingBlankLines:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/BlockLength:
+  Enabled: false
+
+Style/SpaceInLambdaLiteral:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
