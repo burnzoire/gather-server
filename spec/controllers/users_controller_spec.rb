@@ -6,9 +6,9 @@ RSpec.describe UsersController, type: :controller do
     allow(controller).to receive(:authenticate).and_return(true)
   end
 
-  describe 'GET #index' do
-    let!(:user) { FactoryGirl.create(:user) }
+  let!(:user) { FactoryGirl.create(:user) }
 
+  describe 'GET #index' do
     it 'returns a success response' do
       get :index, params: {}
       expect(response).to be_success
@@ -16,8 +16,6 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe 'GET #show' do
-    let!(:user) { FactoryGirl.create(:user) }
-
     it 'returns a success response' do
       get :show, params: { id: user.to_param }
       expect(response).to be_success
@@ -26,9 +24,8 @@ RSpec.describe UsersController, type: :controller do
 
   describe 'POST #create' do
     context 'with valid params' do
-      subject do
-        post :create, params: { user: FactoryGirl.attributes_for(:user) }
-      end
+      subject { post :create, params: { user: FactoryGirl.attributes_for(:user) } }
+
       it 'creates a new User' do
         expect { subject }.to change(User, :count).by(1)
       end
@@ -51,8 +48,6 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe 'DELETE #destroy' do
-    let!(:user) { FactoryGirl.create(:user) }
-
     it 'destroys the requested user' do
       expect { delete :destroy, params: { id: user.to_param } }.to change(User, :count).by(-1)
     end
