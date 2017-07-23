@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Organisation, type: :model do
+RSpec.describe Forum, type: :model do
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_uniqueness_of(:name) }
-  it { is_expected.to have_many(:forums) }
+  it { is_expected.to belong_to(:organisation) }
 end
