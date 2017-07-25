@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725031905) do
+ActiveRecord::Schema.define(version: 20170725080256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 20170725031905) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["organisation_id"], name: "index_forums_on_organisation_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.string "postable_type"
+    t.bigint "postable_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["postable_type", "postable_id"], name: "index_messages_on_postable_type_and_postable_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "organisations", force: :cascade do |t|
@@ -49,6 +60,7 @@ ActiveRecord::Schema.define(version: 20170725031905) do
   end
 
   add_foreign_key "forums", "organisations"
+  add_foreign_key "messages", "users"
   add_foreign_key "topics", "forums"
   add_foreign_key "topics", "users"
 end

@@ -5,7 +5,7 @@ class Message {
   content : text
 }
 abstract class Postable
-class Thread {
+class Topic {
   title : string
   user_id : integer
 }
@@ -17,7 +17,7 @@ class Participation {
 class Organisation
 class Forum
 
-Postable <|-- Thread
+Postable <|-- Topic
 Postable <|-- Conversation
 Moderation --* Forum
 User *-- Moderation
@@ -29,7 +29,7 @@ User *-- Participation
 Message *-- Reaction
 Emote *-- Reaction
 Organisation *-- Forum
-Forum *-- Thread
+Forum *-- Topic
 User *-- Postable
 User *-- Message
 
