@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  has_many :messages
 
   before_create do |user|
     user.api_key = user.generate_api_key
