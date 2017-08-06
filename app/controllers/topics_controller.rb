@@ -1,9 +1,14 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: %I[show update destroy]
+  before_action :set_forum, only: %I[index create]
 
   # GET /topics
   def index
-    @topics = Topic.all
+    @topics = if @forum
+                @forum.topics
+              else
+                Topic.all
+              end
 
     render json: @topics
   end
@@ -42,6 +47,10 @@ class TopicsController < ApplicationController
 
   def set_topic
     @topic = Topic.find(params[:id])
+  end
+
+  def set_forum
+    @forum = Forum.find(params[:forum_id]) if params[:forum_id]
   end
 
   def topic_params
