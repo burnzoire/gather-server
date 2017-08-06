@@ -8,6 +8,7 @@ RSpec.describe MessagesController, type: :controller do
 
   let!(:message) { FactoryGirl.create(:message, postable: topic) }
   let!(:topic) { FactoryGirl.create(:topic) }
+  let!(:user) { FactoryGirl.create(:user) }
 
   describe 'GET #index' do
     it 'returns a success response' do
@@ -25,7 +26,7 @@ RSpec.describe MessagesController, type: :controller do
 
   describe 'POST #create' do
     context 'with valid params' do
-      let(:valid_attributes) { { content: 'lol', postable_id: topic.id, postable_type: 'Topic' } }
+      let(:valid_attributes) { { content: 'lol', postable_id: topic.id, postable_type: 'Topic', user_id: user.id } }
 
       it 'creates a new Message' do
         expect { post :create, params: { message: valid_attributes } }.to change(Message, :count).by(1)

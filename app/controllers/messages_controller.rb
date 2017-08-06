@@ -45,6 +45,6 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:content, :postable_id, :postable_type)
+    params.require(:message).permit(:content, :postable_id, :postable_type, :user_id)
   end
 end
